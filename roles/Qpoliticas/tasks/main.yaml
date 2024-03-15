@@ -1,0 +1,2 @@
+- name: Establecer políticas de criptografía a LEGACY
+  command: update-crypto-policies --set LEGACY

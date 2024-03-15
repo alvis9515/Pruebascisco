@@ -1,0 +1,12 @@
+- name: Añadir configuraciones a /etc/ssh/ssh_config
+  lineinfile:
+    path: /etc/ssh/ssh_config
+    line: "{{ item }}"
+    insertafter: EOF
+    loop:
+      - "Host 192.168.73.71"
+      - "KexAlgorithms diffie-hellman-group14-sha1"
+      - "MACs hmac-sha1"
+      - "HostKeyAlgorithms ssh-rsa,ssh-dss"
+      - "PubkeyAcceptedKeyTypes ssh-rsa"
+      - "PubkeyAcceptedAlgorithms ssh-rsa,ssh-dss"

@@ -1,4 +1,10 @@
 ---
+- name: Lanzar configuraciones ssh para los hosts
+  hosts: localhost
+  become: true
+  roles:
+    - role: 'roles/configuracion'
+
 - name: Lanzar inicio de backup para los hosts seleccionados
   hosts: routers
   become: true
