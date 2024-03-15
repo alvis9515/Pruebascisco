@@ -3,5 +3,5 @@
   hosts: routers
   become: true
   roles:
-    - role: 'Pruebascisco/roles/backup'
-    - role: 'Pruebascisco/roles/Removelines'
+    - role: 'roles/backup'
+    - role: 'roles/Removelines'
