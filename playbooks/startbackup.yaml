@@ -3,7 +3,8 @@
   hosts: localhost
   become: true
   roles:
-    - role: 'roles/configuracion'
+    - role: 'roles/Configuraciones'
+    - role: 'roles/Qpoliticas'
 
 - name: Lanzar inicio de backup para los hosts seleccionados
   hosts: routers
