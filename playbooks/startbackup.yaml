@@ -1,0 +1,7 @@
+---
+- name: Lanzar inicio de backup para los hosts seleccionados
+  hosts: routers
+  become: true
+  roles:
+    - role: 'nuevaspruebas/roles/backup'
+    - role: 'nuevaspruebas/roles/Removelines'

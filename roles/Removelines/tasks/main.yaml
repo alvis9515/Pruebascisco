@@ -1,0 +1,6 @@
+- name: Remove non config lines - regexp
+  ansible.builtin.lineinfile:
+    path: "{{ config_output.backup_path }}"
+    line: "Building configuration..."
+    state: absent
+  delegate_to: localhost

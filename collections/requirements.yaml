@@ -1,0 +1,6 @@
+---
+collections:
+  - name: cisco.ios
+  - name: awx.awx
+  - name: ansible.netcommon
+
