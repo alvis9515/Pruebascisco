@@ -1,11 +1,19 @@
-- name: Añadir configuraciones a /etc/ssh/ssh_config
-  blockinfile:
-    path: /etc/ssh/ssh_config
+- name: Ensure ~/.ssh is present
+  ansible.builtin.file:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh"
+    state: directory
+    mode: '0700'
+  delegate_to: localhost
+
+- name: Ensure legacy SSH ciphers / algorithms are enabled
+  ansible.builtin.blockinfile:
+    path: "{{ lookup('ansible.builtin.env', 'HOME') }}/.ssh/config"
+    create: true
+    mode: '0600'
     block: |
-      Host 192.168.73.71
-      KexAlgorithms diffie-hellman-group14-sha1
-      MACs hmac-sha1
-      HostKeyAlgorithms ssh-rsa,ssh-dss
-      PubkeyAcceptedKeyTypes ssh-rsa
-      PubkeyAcceptedAlgorithms ssh-rsa,ssh-dss
+      Host *
+        KexAlgorithms +diffie-hellman-group1-sha1,diffie-hellman-group14-sha1
+        MACs hmac-sha1,hmac-sha1-96,hmac-md5,hmac-md5-96
+        Ciphers +aes256-cbc,aes192-cbc,aes128-cbc,3des-cbc
+        HostkeyAlgorithms ssh-rsa
   delegate_to: localhost
