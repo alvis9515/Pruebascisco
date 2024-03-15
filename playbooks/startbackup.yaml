@@ -1,13 +1,3 @@
----
-- name: Lanzar configuraciones ssh para los hosts
-  hosts: localhost
-  become: true
-  become_user: root
-
-  roles:
-    - role: 'roles/Configuraciones'
-    - role: 'roles/Qpoliticas'
-
 - name: Lanzar inicio de backup para los hosts seleccionados
   hosts: routers
   become: true
