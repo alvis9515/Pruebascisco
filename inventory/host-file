@@ -1,2 +1,2 @@
 [routers]
-router 1 ansible_host=192.168.73.71
+router-1 ansible_host=192.168.73.71
