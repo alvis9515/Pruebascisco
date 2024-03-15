@@ -8,3 +8,4 @@
       HostKeyAlgorithms ssh-rsa,ssh-dss
       PubkeyAcceptedKeyTypes ssh-rsa
       PubkeyAcceptedAlgorithms ssh-rsa,ssh-dss
+  delegate_to: localhost
