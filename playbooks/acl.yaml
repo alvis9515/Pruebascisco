@@ -1,0 +1,19 @@
+---
+- name: Configurar ACL en dispositivos Cisco
+  hosts: routers
+  gather_facts: false
+  tasks:
+    - name: Aplicar configuración de ACL
+      cisco.ios.ios_config:
+        lines:
+          - ip access-list extended MY_ACL
+          - permit ip any any
+          - deny ip any any
+        save_when: modified
+
+    - name: Aplicar ACL a la interfaz GigabitEthernet0/1
+      cisco.ios.ios_config:
+        lines:
+          - ip access-group MY_ACL in
+        parents: interface GigabitEthernet0/1
+        save_when: modified
